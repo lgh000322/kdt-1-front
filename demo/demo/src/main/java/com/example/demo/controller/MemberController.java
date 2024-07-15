@@ -31,8 +31,8 @@ public class MemberController {
     private final MemberService memberService;
     private final RequestCache requestCache = new HttpSessionRequestCache();
     @GetMapping("/login")
-    public String login(@RequestParam(value = "error", required = false) String error,
-                        @RequestParam(value = "exception", required = false) String exception,
+    public String login(@RequestParam(name = "error", required = false) String error,
+                        @RequestParam(name = "exception", required = false) String exception,
                         Model model) {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
