@@ -6,6 +6,7 @@ import com.example.demo.dto.MemberDto;
 import com.example.demo.dto.MemberJoinDto;
 import com.example.demo.dto.MemberResponseDto;
 import com.example.demo.repository.MemberRepository;
+import com.example.demo.service.declared.MemberService;
 import com.example.demo.util.KakaoUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

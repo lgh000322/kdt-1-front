@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
     <!-- 헤더 부분입니다. -->
     <header>
         <nav id="nav" class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid"> <a class="navbar-brand" href="초기화면.html">LOGO</a> <button
+            <div class="container-fluid"> <a class="navbar-brand" th:href="@{/game/init}">LOGO</a> <button
                     class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span> </button>
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
@@ -41,7 +41,7 @@
             <div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
-                        <a class="card-img-top" href="틱택토.html" style="text-decoration: none; color: black;">
+                        <a class="card-img-top" th:href="@{/game/1}" style="text-decoration: none; color: black;">
                             <img src="../img/틱택토.png" class="card-img-top justify-content-center">
                             <div class="card-body">
                                 택택토 게임

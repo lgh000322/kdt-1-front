@@ -48,7 +48,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/member/join", "/member/idValidation", "/member/nameValidation","/member/kakao/login","/member/kakao","/game/init", "/css/**","/js/**","/img/**").permitAll()
+                                .requestMatchers("/member/join", "/member/idValidation", "/member/nameValidation","/member/kakao/login","/member/kakao","/game/init", "/css/**","/js/**","/img/**","/member/login?error=true&exception=*","/member/login").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(login ->

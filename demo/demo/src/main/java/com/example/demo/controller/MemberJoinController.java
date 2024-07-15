@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.MemberService;
+import com.example.demo.service.declared.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
