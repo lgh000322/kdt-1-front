@@ -4,13 +4,50 @@ $(document).ready(function () {
     //345
     //678
 
+    $("#comment-submit-btn").click(function () {
+        let content = $("#comment").val();
+        let gamename = $("title").text();
+        let username = $('#memberName').text();
 
+        fetch("/comment/write", {
+            method: "POST",
+            body: JSON.stringify({ content: content, gamename: gamename }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    //댓글 작성 성공시 데이터를 추가해줘야함
+                    let newComment = `
+                    <div class="comments">
+                        <p class="userName">${username}</p>
+                        <p class="userComment">${content}</p>
+                    </div>
+                `;
+
+                    $("#comments-aria").prepend(newComment);
+                    $("#comment").val("");
+                } else {
+                    alert("댓글 작성 중 에러가 발생했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error("Error: ", error);
+                alert("댓글 작성 중 에러가 발생했습니다.");
+            });
+    });
+});
+
+$(document).ready(function () {
     let text = ''; // 댓글을 담을 텍스트
 
     let setText = function () {
-        text += ' <div id="comments">';
-        text += '  <p id="userName">id</p>';
-        text += ' <p id="userComment"> comment......</p>';
+        text += ' <div class="comments">';
+        text += '  <p class="userName">id</p>';
+        text += ' <p class="userComment"> comment......</p>';
         text += '</div>';
     };
 
@@ -31,12 +68,14 @@ $(document).ready(function () {
     });
 
     setText();
+})
 
+$(document).ready(function () {
     //승리 조합
     let win_combination = [
         [0, 1, 2],
         [3, 4, 5],
-        [6, 7 ,8],
+        [6, 7, 8],
         [0, 3, 6],
         [1, 4, 7],
         [2, 5, 8],
@@ -63,8 +102,8 @@ $(document).ready(function () {
     // td를 클릭하면 실행
     $("td").click(function () {
 
-          // td에 값이 있으면 alert후 종료
-        if($(this).html() !== ""){
+        // td에 값이 있으면 alert후 종료
+        if ($(this).html() !== "") {
             alert("체크된 자리입니다. 다른 자리를 골라주세요.");
             return;
         }
@@ -89,12 +128,12 @@ $(document).ready(function () {
 
 
 
-            if(parseInt(trNum) == 1){
+            if (parseInt(trNum) == 1) {
                 tdNum = parseInt(tdNum) + 3;
                 console.log("tdNum = " + tdNum);
             }
 
-            else if(parseInt(trNum) == 2){
+            else if (parseInt(trNum) == 2) {
                 tdNum = parseInt(tdNum) + 6;
                 console.log("tdNum = " + tdNum);
             }
@@ -103,18 +142,18 @@ $(document).ready(function () {
             o_check_win.set(tdNum.toString(), "O");
 
             //승리 확인
-            for(i = 0; i < win_combination.length; i++){
+            for (i = 0; i < win_combination.length; i++) {
                 // 승리 확인을 위한 변수
                 var value = "";
 
-                for(j = 0; j < win_combination[i].length; j++){
+                for (j = 0; j < win_combination[i].length; j++) {
                     var key = win_combination[i][j];
                     //가져온 밸류를 합친다
                     var value = value + o_check_win.get(key.toString());
 
 
                     // 승리조합확인.
-                    if(value === "OOO"){
+                    if (value === "OOO") {
                         $("#modal_txt").html("O's Win!!!");
                         $(".modal").css("display", "block");
                         $(".close").click(() => {
@@ -128,7 +167,7 @@ $(document).ready(function () {
 
 
             // 만약 위 포문에 걸리지 않고 cnt == 9가 되면 draw
-            if(cnt === 9){
+            if (cnt === 9) {
                 console.log("cnt = " + cnt);
                 $("#modal_txt").html("Draw!!!");
                 $(".modal").css("display", "block");
@@ -152,13 +191,13 @@ $(document).ready(function () {
             $(this).html('<img src="../img/X.png" alt="" style="width: 100px; height: 100px;">');
 
             //1행일경우 td에  + 3을해줌
-            if(parseInt(trNum) == 1){
+            if (parseInt(trNum) == 1) {
                 tdNum = parseInt(tdNum) + 3;
                 console.log("tdNum = " + tdNum);
             }
 
             //2행일경우 td에 +6을 해줌
-            else if(parseInt(trNum) == 2){
+            else if (parseInt(trNum) == 2) {
                 tdNum = parseInt(tdNum) + 6;
                 console.log("tdNum = " + tdNum);
             }
@@ -167,18 +206,18 @@ $(document).ready(function () {
             x_check_win.set(tdNum.toString(), "X");
 
             //승리 확인
-            for(i = 0; i < win_combination.length; i++){
+            for (i = 0; i < win_combination.length; i++) {
                 // 승리 확인을 위한 변수
                 var value = "";
 
-                for(j = 0; j < win_combination[i].length; j++){
+                for (j = 0; j < win_combination[i].length; j++) {
                     var key = win_combination[i][j];
                     //가져온 밸류를 합친다
                     var value = value + x_check_win.get(key.toString());
 
 
                     // 승리조합확인.
-                    if(value === "XXX"){
+                    if (value === "XXX") {
                         $("#modal_txt").html("X's Win!!!");
                         $(".modal").css("display", "block");
                         $(".close").click(() => {
@@ -192,15 +231,15 @@ $(document).ready(function () {
 
 
             //무승부 시 모달창 띄움
-             if(cnt === 9){
+            if (cnt === 9) {
                 console.log("cnt = " + cnt);
                 $("#modal_txt").html("Draw!!!");
                 $(".modal").css("display", "block");
                 $(".close").click(() => {
                     $(".modal").css("display", "none");
                 });
-                 return;
-             }
+                return;
+            }
 
 
 
@@ -224,7 +263,9 @@ $(document).ready(function () {
         cnt = 0;
         $("td").html("");
     });
+})
 
 
 
-});
+
+
