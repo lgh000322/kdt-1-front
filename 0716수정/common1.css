@@ -1,0 +1,65 @@
+.body1 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 45, 42, 0.486);
+  }
+  
+  .body2 {
+    width: 100%;
+    height: 100%;
+    --color: rgba(114, 114, 114, 0.3);
+    background-color: #191a1a;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+  }
+  
+  button {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 6px #c5c5c5, -6px -6px 12px #ffffff;
+    position: absolute; /* 버튼의 위치를 절대적으로 설정 */
+    top: 140px; 
+    right: 20px; /* 오른쪽에서 20px 떨어진 위치 */
+  }
+  
+  button:hover {
+    border: 1px solid white;
+    box-shadow: none;
+  }
+  
+  button:active {
+    box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+  }
+#nav {
+    background-color: rgba(0, 0, 255, 0.575) !important; /* 기본 배경색 */
+    height: 100px; /* 높이를 필요에 맞게 조정 */
+    border-radius: 0 0 15px 15px; /* 아래쪽이 둥근 네모 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    transition: background 0.3s ease-in-out; /* 배경 전환 효과 */
+  }
+  
+  #nav:hover {
+    background: linear-gradient(to right, rgba(25, 88, 236, 0.685), rgba(85, 215, 248, 0.575)) !important; /* 마우스를 올렸을 때의 배경 그라데이션 */
+  }
+  
+
+.navbar-brand,.nav-link {
+    line-height: 80px;
+    /* Center vertically */
+    color: rgb(132, 160, 187);
+}
+
+.navbar-brand {
+    margin-left: 100px;
+}
+
+.nav-link {
+    margin-top: 40px;
+}
