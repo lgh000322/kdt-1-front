@@ -1,0 +1,10 @@
+caption {
+    caption-side: top;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.table tbody tr:nth-child(even) td {
+    background-color: rgb(21, 233, 230);
+}

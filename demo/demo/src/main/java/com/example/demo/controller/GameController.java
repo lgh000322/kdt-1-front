@@ -60,6 +60,9 @@ public class GameController {
         //댓글 목록
         model.addAttribute("commentList", commentDtoList);
 
+        //게임의 id(기본키)
+        model.addAttribute("gameId", gameId);
+
         return sb.toString();
     }
 

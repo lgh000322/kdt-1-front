@@ -3,6 +3,7 @@ package com.example.demo.service.declared;
 import com.example.demo.domain.Ranking;
 import com.example.demo.dto.RankingDto;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface RankingService {
@@ -10,6 +11,8 @@ public interface RankingService {
     Optional<RankingDto> save(RankingDto rankingDto);
 
     Optional<RankingDto> update(RankingDto rankingDto);
+
+    Optional<List<RankingDto>> findByGameId(Long gameId);
 
     Integer findByGameNameAndNickname(String gamename, String nickname);
 
