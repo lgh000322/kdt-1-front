@@ -24,4 +24,16 @@ public class Ranking {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void updateScore(Integer score) {
+        this.score=score;
+    }
 }
