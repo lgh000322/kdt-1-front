@@ -28,4 +28,12 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
     private Game game;
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
