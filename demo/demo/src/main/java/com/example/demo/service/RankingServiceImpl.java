@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,6 +49,19 @@ public class RankingServiceImpl implements RankingService {
         ranking.updateScore(rankingDto.getScore());
 
         return Optional.ofNullable(entityToRankingDto(ranking));
+    }
+
+    @Override
+    public Optional<List<RankingDto>> findByGameId(Long gameId) {
+        List<Ranking> rankings = rankingRepository.findAllByGameId(gameId).orElseThrow();
+
+        List<RankingDto> rankingDtos = new ArrayList<>();
+
+        for (Ranking ranking : rankings) {
+            rankingDtos.add(entityToRankingDto(ranking));
+        }
+
+        return Optional.ofNullable(rankingDtos);
     }
 
     @Override

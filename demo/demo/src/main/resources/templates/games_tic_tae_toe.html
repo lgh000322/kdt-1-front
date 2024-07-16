@@ -40,7 +40,7 @@
                     <li th:if="${memberName}"><a class="nav-link" th:href="@{/logout}">로그아웃</a></li>
                     <li th:if="${memberName}"><a class="nav-link" href="#">사용자</a></li>
                     <li class="nav-item" th:unless="${memberName}"><a class="nav-link" href="/member/login">로그인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">랭킹</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/ranking/list/{gameId}(gameId=${gameId})}">랭킹</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +50,7 @@
 <!-- 게임의 내용을 담은 섹터부분입니다. -->
 <div class="container-sm mt-2">
 
-    <h2 class="black-ops-one-regular text-white "> tic tack toe</h2>
+    <h2 class="black-ops-one-regular text-white "> tic tae toe</h2>
 
     <div class="game-table mt-3">
 

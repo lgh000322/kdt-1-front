@@ -5,6 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.demo.domain.QGame.*;
@@ -14,10 +15,12 @@ import static com.example.demo.domain.QRanking.*;
 public class RankingRepositoryCustomImpl extends QuerydslRepositorySupport implements RankingRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
+
     public RankingRepositoryCustomImpl(EntityManager entityManager) {
         super(Ranking.class);
         queryFactory = new JPAQueryFactory(entityManager);
     }
+
     @Override
     public Optional<Ranking> findByNickname(String nickname) {
         //회원의 닉네임
@@ -46,5 +49,18 @@ public class RankingRepositoryCustomImpl extends QuerydslRepositorySupport imple
                 .fetchOne();
 
         return score;
+    }
+
+    @Override
+    public Optional<List<Ranking>> findAllByGameId(Long gameId) {
+        return Optional.ofNullable(queryFactory
+                .select(ranking)
+                .from(ranking)
+                .innerJoin(ranking.game, game)
+                .where(ranking.game.id.eq(gameId))
+                .orderBy(ranking.score.desc())
+                .limit(10)
+                .offset(0)
+                .fetch());
     }
 }

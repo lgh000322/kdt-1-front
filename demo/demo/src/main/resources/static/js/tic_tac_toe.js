@@ -53,7 +53,6 @@ $(document).ready(function () {
         })
             .then(response => response.json())
             .then(data => {
-                 alert("데이터 조회 성공"+data.score)
                  return data.score;
             })
             .catch(error => {
