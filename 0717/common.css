@@ -1,0 +1,28 @@
+
+  
+#nav {
+    background-color: rgba(0, 0, 255, 0.575) !important; /* 기본 배경색 */
+    height: 100px; /* 높이를 필요에 맞게 조정 */
+    border-radius: 0 0 15px 15px; /* 아래쪽이 둥근 네모 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    transition: background 0.3s ease-in-out; /* 배경 전환 효과 */
+  }
+  
+  #nav:hover {
+    background: linear-gradient(to right, rgba(25, 88, 236, 0.685), rgba(85, 215, 248, 0.575)) !important; /* 마우스를 올렸을 때의 배경 그라데이션 */
+  }
+  
+
+.navbar-brand,.nav-link {
+    line-height: 80px;
+    /* Center vertically */
+    color: rgb(132, 160, 187);
+}
+
+.navbar-brand {
+    margin-left: 100px;
+}
+
+.nav-link {
+    margin-top: 40px;
+}

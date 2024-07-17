@@ -1,0 +1,99 @@
+.body1 {
+    width: 100%;
+    height: 100%;
+    --color: #E1E1E1;
+    background-color: #F3F3F3;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+    }
+    
+    .body2 {
+      width: 100%;
+      height: 100%;
+      --color: rgba(114, 114, 114, 0.3);
+      background-color: #191a1a;
+      background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+          linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+      background-size: 55px 55px;
+    }
+    button {
+        color: #090909;
+        padding: 0.7em 1.7em;
+        font-size: 18px;
+        border-radius: 0.5em;
+        background: #e8e8e8;
+        cursor: pointer;
+        border: 1px solid #e8e8e8;
+        transition: all 0.3s;
+        box-shadow: 6px 6px 6px #c5c5c5, -6px -6px 12px #ffffff;
+        position: absolute; /* 버튼의 위치를 절대적으로 설정 */
+        top: 140px; 
+        right: 20px; /* 오른쪽에서 20px 떨어진 위치 */
+      }
+      
+      button:hover {
+        border: 1px solid white;
+        box-shadow: none;
+      }
+      
+      button:active {
+        box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+      }
+    
+h2 {
+    margin-top: 20px;
+    color: rgb(87, 104, 105);
+}
+h5 {
+    margin-top: 10px;
+    color: black;
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+
+.card {
+    margin-bottom: 20px;
+    border-radius: 10px; /* 모난 테두리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(190, 190, 190),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+    transition: transform 0.3s ease; /* 이미지 확대 애니메이션 */
+}
+
+.image-container:hover img {
+    transform: scale(1.05); /* 확대 효과 */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 70% 투명 회색 박스 */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* 마우스를 올렸을 때 나타남 */
+}
