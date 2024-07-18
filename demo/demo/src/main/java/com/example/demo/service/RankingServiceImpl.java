@@ -42,12 +42,10 @@ public class RankingServiceImpl implements RankingService {
     @Transactional
     @Override
     public Optional<RankingDto> update(RankingDto rankingDto) {
-        Optional<Ranking> foundedRanking = rankingRepository.findByNickname(rankingDto.getNickname());
+        Optional<Ranking> foundedRanking = rankingRepository.findByGameNameAndNickName(rankingDto.getGamename(), rankingDto.getNickname());
         Ranking ranking = foundedRanking.orElseThrow(() ->
                 new RuntimeException("회원이 가진 점수가 존재하지 않습니다."));
-
         ranking.updateScore(rankingDto.getScore());
-
         return Optional.ofNullable(entityToRankingDto(ranking));
     }
 
@@ -65,8 +63,9 @@ public class RankingServiceImpl implements RankingService {
     }
 
     @Override
-    public Integer findByGameNameAndNickname(String gamename, String nickname) {
-        return rankingRepository.findByGameNameAndNickName(gamename, nickname);
+    public Integer findScoreByGameNameAndNickname(String gamename, String nickname) {
+        Optional<Ranking> foundedRanking = rankingRepository.findByGameNameAndNickName(gamename, nickname);
+        return foundedRanking.map(Ranking::getScore).orElse(null);
     }
 
     private Ranking getRanking(RankingDto rankingDto, Game game, Member member) {
