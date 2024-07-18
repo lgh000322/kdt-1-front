@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.domain.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;
@@ -20,35 +21,23 @@ public class RankingRepositoryCustomImpl extends QuerydslRepositorySupport imple
         super(Ranking.class);
         queryFactory = new JPAQueryFactory(entityManager);
     }
-
     @Override
-    public Optional<Ranking> findByNickname(String nickname) {
-        //회원의 닉네임
-        Ranking foundedRanking = queryFactory
+    public Optional<Ranking> findByGameNameAndNickName(String gamename, String nickname) {
+        //회원의 닉네임과 게임의 이름이 같은것
+        Ranking findRanking = queryFactory
                 .select(ranking)
-                .from(ranking)
-                .innerJoin(ranking.member, member).fetchJoin()
-                .where(member.nickname.eq(nickname))
-                .fetchOne();
-
-        return Optional.ofNullable(foundedRanking);
-    }
-
-    @Override
-    public Integer findByGameNameAndNickName(String gamename, String nickname) {
-        //회원의 닉네임과 게임의 이름이 같은것의 점수
-        Integer score = queryFactory
-                .select(ranking.score)
                 .from(ranking)
                 .innerJoin(ranking.game, game)
                 .innerJoin(ranking.member, member)
+                .fetchJoin()
                 .where(
                         ranking.member.nickname.eq(nickname),
                         ranking.game.gamename.eq(gamename)
                 )
+               /* .setLockMode(LockModeType.PESSIMISTIC_WRITE)*/
                 .fetchOne();
 
-        return score;
+        return Optional.ofNullable(findRanking);
     }
 
     @Override

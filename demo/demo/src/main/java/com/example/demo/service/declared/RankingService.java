@@ -14,7 +14,7 @@ public interface RankingService {
 
     Optional<List<RankingDto>> findByGameId(Long gameId);
 
-    Integer findByGameNameAndNickname(String gamename, String nickname);
+    Integer findScoreByGameNameAndNickname(String gamename, String nickname);
 
     default Ranking RankingDtoToEntity(RankingDto rankingDto) {
         return Ranking.builder()

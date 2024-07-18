@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public interface RankingRepositoryCustom {
 
-    Optional<Ranking> findByNickname(String nickname);
 
-    Integer findByGameNameAndNickName(String gamename, String nickname);
+    Optional<Ranking> findByGameNameAndNickName(String gamename, String nickname);
 
     Optional<List<Ranking>> findAllByGameId(Long gameId);
 

@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.GameDto;
 import com.example.demo.dto.RankingDto;
 import com.example.demo.service.declared.GameService;
 import com.example.demo.service.declared.RankingService;
@@ -28,7 +27,7 @@ public class RankingController {
     @GetMapping("/score")
     public Map<String, Object> getScore(@RequestParam(name = "gamename") String gamename,
                                         @RequestParam(name = "nickname") String nickname) {
-        Integer score = rankingService.findByGameNameAndNickname(gamename, nickname);
+        Integer score = rankingService.findScoreByGameNameAndNickname(gamename, nickname);
         Map<String, Object> map = new HashMap<>();
         if (score == null) {
             map.put("score", 0);
