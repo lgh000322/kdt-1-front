@@ -9,7 +9,6 @@
 
 #game-table {
   align-items: center;
-
 }
 
 table,
@@ -21,7 +20,7 @@ td {
 
 table {
   margin-top: 0px;
-  width: 600px;
+  width: 50%;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +30,7 @@ td {
   background-color: white;
   border-radius: 10px;
   text-align: center;
-  width: 190px;
+  width: 20%;
   height: 190px;
 }
 
@@ -48,19 +47,6 @@ td {
   background-color: rgba(0, 0, 0, 0.4); /* 배경 불투명도 조절 */
 }
 
-/* 모달 내용 스타일 */
-
-.modal {
-  display: none; /* 모달창 기본 숨김 */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8); /* 배경 불투명도 조절 */
-}
 
 .modal-content {
 
